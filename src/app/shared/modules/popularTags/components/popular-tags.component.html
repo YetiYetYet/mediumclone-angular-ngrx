@@ -1,0 +1,11 @@
+<app-loading *ngIf="isLoading$ | async"></app-loading>
+<app-errorMessage *ngIf="error$| async" [message]="error$ | async"></app-errorMessage>
+
+<div class="sidebar" *ngIf="popularTags$ | async">
+  <p>Popular Tags</p>
+  <div class="tag-list">
+    <a *ngFor="let tag of popularTags$ | async" [routerLink]="['/tags', tag]" class="tag-pill tag-default">
+      {{ tag }}
+    </a>
+  </div>
+</div>

@@ -8,6 +8,11 @@ import {FeedService} from "./services/feed.service";
 import {EffectsModule} from "@ngrx/effects";
 import {GetFeedEffect} from "./store/effects/getFeed.effect";
 import {reducers} from "./store/reducers";
+import {ErrorMessageModule} from "../errorMessage/errorMessage.module";
+import {LoadingModule} from "../loading/loading.module";
+import {PaginationModule} from "../pagination/pagination.module";
+import {TagListModule} from "../tagList/tagList.module";
+
 
 
 @NgModule({
@@ -18,7 +23,11 @@ import {reducers} from "./store/reducers";
     CommonModule,
     EffectsModule.forFeature([GetFeedEffect]),
     StoreModule.forFeature('feed', reducers),
-    RouterModule
+    RouterModule,
+    ErrorMessageModule,
+    LoadingModule,
+    PaginationModule,
+    TagListModule
   ],
   exports: [
     FeedComponent

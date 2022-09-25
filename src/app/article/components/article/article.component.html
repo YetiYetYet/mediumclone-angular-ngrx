@@ -1,0 +1,36 @@
+
+<div class="article-page">
+  <div class="banner">
+    <div class="container" *ngIf="article">
+      <h1>{{article.title}}</h1>
+      <div class="article-meta">
+        <a [routerLink]="['/profiles', article.author.username]"><img [src]="article.author.image"  alt="Author Image"/></a>
+        <div class="info">
+          <a [routerLink]="['/profiles', article.author.username]" class="author">{{article.author.username}}</a>
+          <span class="date">{{article.createdAt | date}}</span>
+        </div>
+        <span *ngIf="isAuthor$" class="pull-xs-right">
+          <a [routerLink]="['/article', article.slug, '/edit']" class="btn btn-sm btn-outline-secondary">
+            <i class="ion-edit"></i> Edit Article
+          </a>
+          <a [routerLink]="['/article', article.slug, '/delete']" class="btn btn-sm btn-outline-secondary">
+            <i class="ion-edit"></i> Delete Article
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <app-loading *ngIf="isLoading$ | async"></app-loading>
+    <app-errorMessage *ngIf="error$ | async"></app-errorMessage>
+
+    <div class="row article-content" *ngIf="article">
+      <div class="col-xs-12">
+        <div>
+          <p>{{article.body}}</p>
+        </div>
+        <app-taglist [tags]="article.tagList"></app-taglist>
+      </div>
+    </div>
+  </div>
+</div>

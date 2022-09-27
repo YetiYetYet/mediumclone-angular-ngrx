@@ -11,6 +11,7 @@ import {AppStateInterface} from "../../../shared/types/appState.interface";
 import {ArticleInterface} from "../../../shared/types/article.interface";
 import {currentUserSelector} from "../../../auth/store/selectors";
 import {CurrentUserInterface} from "../../../shared/types/currentUser.interface";
+import {deleteArticleAction} from "../../store/actions/deleteArticle.actions";
 
 @Component({
   selector: 'app-article',
@@ -59,15 +60,18 @@ export class ArticleComponent implements OnInit, OnDestroy {
         ([article, currentUser]: [ArticleInterface | null, CurrentUserInterface | null]) =>
         {
           if (!article || !currentUser) {
-            return false;
-        }
-        return currentUser.username === article.author.username;
+            return false;}
+          return currentUser.username === article.author.username;
     }))
-    //this.baseUrl = this.router.url.split('?')[0];
+
   }
 
   fetchData(): void {
     this.store.dispatch(getArticleAction({slug: this.slug}));
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({slug: this.slug}));
   }
 
 }

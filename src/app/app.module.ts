@@ -16,6 +16,8 @@ import {GlobalFeedModule} from "./globalFeed/global-feed.module";
 import {YourFeedModule} from "./yourFeed/your-feed.module";
 import {TagFeedModule} from "./tagFeed/tag-feed.module";
 import {ArticleModule} from "./article/article.module";
+import {CreateArticleModule} from "./createArticle/create-article.module";
+import {EditArticleModule} from "./editArticle/edit-article.module";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {ArticleModule} from "./article/article.module";
     StoreRouterConnectingModule.forRoot(),
     YourFeedModule,
     TagFeedModule,
-    ArticleModule
+    CreateArticleModule,
+    ArticleModule,
+    EditArticleModule
 
   ],
   providers: [
